@@ -1,0 +1,17 @@
+server:
+  port: 8999
+
+eureka:
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: note-service
+          uri: lb://note-service
+          predicates:
+            - Path=/api/v1/note/**
